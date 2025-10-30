@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+}
+
+@theme {
+  --grid-app: minmax(18rem, 20rem) 1fr;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
