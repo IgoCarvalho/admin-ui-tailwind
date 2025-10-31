@@ -1,4 +1,5 @@
-import { Input } from "@/ui/input";
+import * as InputFile from "@/ui/form/input-file";
+import * as Input from "@/ui/input";
 import { SettingsTabs } from "@/ui/settings-tabs";
 import { MailIcon } from "lucide-react";
 
@@ -91,7 +92,11 @@ export default function Home() {
               </span>
             </label>
 
-            <div></div>
+            <InputFile.Root className="flex items-start gap-5">
+              <InputFile.ImagePreview />
+              <InputFile.Trigger />
+              <InputFile.Control />
+            </InputFile.Root>
           </div>
 
           <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
@@ -145,7 +150,11 @@ export default function Home() {
               </span>
             </label>
 
-            <div></div>
+            <InputFile.Root>
+              <InputFile.Trigger />
+              <InputFile.FileList />
+              <InputFile.Control multiple />
+            </InputFile.Root>
           </div>
 
           <div className="flex items-center justify-end gap-2">

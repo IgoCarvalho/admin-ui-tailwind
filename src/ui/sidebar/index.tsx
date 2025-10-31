@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { Input } from "../input";
+import * as Input from "../input";
 import { FooterNavigation } from "./footer-navigation";
 import { Logo } from "./logo";
 import { MainNavigation } from "./main-navigation";

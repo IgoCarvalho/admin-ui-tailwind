@@ -1,7 +1,6 @@
-import { Search } from "lucide-react";
 import { ComponentProps } from "react";
 
-function Root(props: ComponentProps<"div">) {
+export function Root(props: ComponentProps<"div">) {
   return (
     <div
       className="flex items-center gap-2 rounded-lg border border-zinc-300 px-3 py-2 shadow-sm mx-1"
@@ -10,7 +9,7 @@ function Root(props: ComponentProps<"div">) {
   );
 }
 
-function Prefix(props: ComponentProps<"div">) {
+export function Prefix(props: ComponentProps<"div">) {
   return <div {...props} />;
 }
 
@@ -22,9 +21,3 @@ export function Control(props: ComponentProps<"input">) {
     />
   );
 }
-
-export const Input = {
-  Root,
-  Prefix,
-  Control,
-};
