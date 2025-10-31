@@ -1,4 +1,5 @@
 import * as InputFile from "@/ui/form/input-file";
+import * as Select from "@/ui/form/select";
 import * as Input from "@/ui/input";
 import { SettingsTabs } from "@/ui/settings-tabs";
 import { MailIcon } from "lucide-react";
@@ -104,7 +105,7 @@ export default function Home() {
               Role
             </label>
             <Input.Root>
-              <Input.Control id="role" defaultValue="CTO" />
+              <Input.Control id="role" defaultValue="Frontend Developer" />
             </Input.Root>
           </div>
 
@@ -115,7 +116,11 @@ export default function Home() {
             >
               Country
             </label>
-            <div></div>
+
+            <Select.Root placeholder="Select a country...">
+              <Select.Item value="br">Brazil</Select.Item>
+              <Select.Item value="us">United States</Select.Item>
+            </Select.Root>
           </div>
 
           <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
@@ -125,7 +130,14 @@ export default function Home() {
             >
               Timezone
             </label>
-            <div></div>
+            <Select.Root placeholder="Select a timezone...">
+              <Select.Item value="pst">
+                Pacific Standard Time (UTC-08:00)
+              </Select.Item>
+              <Select.Item value="sp">
+                America São Paulo (UTC-03:00)
+              </Select.Item>
+            </Select.Root>
           </div>
 
           <div className="grid grid-cols-(--grid-form) gap-3 pb-5">

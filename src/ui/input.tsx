@@ -3,7 +3,7 @@ import { ComponentProps } from "react";
 export function Root(props: ComponentProps<"div">) {
   return (
     <div
-      className="flex items-center gap-2 rounded-lg border border-zinc-300 px-3 py-2 shadow-sm mx-1"
+      className="flex items-center gap-2 rounded-lg border border-zinc-300 px-3 py-2 shadow-sm "
       {...props}
     />
   );
