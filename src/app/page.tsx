@@ -1,8 +1,16 @@
 import * as InputFile from "@/ui/form/input-file";
 import * as Select from "@/ui/form/select";
+import { TextArea } from "@/ui/form/text-area";
 import * as Input from "@/ui/input";
 import { SettingsTabs } from "@/ui/settings-tabs";
-import { MailIcon } from "lucide-react";
+import {
+  BoldIcon,
+  ItalicIcon,
+  LinkIcon,
+  ListIcon,
+  ListOrderedIcon,
+  MailIcon,
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -148,7 +156,38 @@ export default function Home() {
               </span>
             </label>
 
-            <div></div>
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <Select.Root defaultValue="normal">
+                  <Select.Item value="normal">Normal Text</Select.Item>
+                  <Select.Item value="md">Markdown</Select.Item>
+                </Select.Root>
+
+                <div className="flex items-center gap-1">
+                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                    <BoldIcon className="size-4 text-zinc-500" />
+                  </button>
+
+                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                    <ItalicIcon className="size-4 text-zinc-500" />
+                  </button>
+
+                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                    <LinkIcon className="size-4 text-zinc-500" />
+                  </button>
+
+                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                    <ListIcon className="size-4 text-zinc-500" />
+                  </button>
+
+                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                    <ListOrderedIcon className="size-4 text-zinc-500" />
+                  </button>
+                </div>
+              </div>
+
+              <TextArea id="bio" defaultValue="I'm a Frontend Developer" />
+            </div>
           </div>
 
           <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
