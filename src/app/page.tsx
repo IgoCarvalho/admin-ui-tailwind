@@ -1,3 +1,4 @@
+import { Button } from "@/ui/button";
 import * as InputFile from "@/ui/form/input-file";
 import * as Select from "@/ui/form/select";
 import { TextArea } from "@/ui/form/text-area";
@@ -29,19 +30,12 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              className="rounded-lg px-4 py-2 text-sm font-semibold shadow-sm border border-zinc-300 text-zinc-700 hover:bg-zinc-50"
-            >
+            <Button type="button" variant="outline">
               Cancel
-            </button>
-            <button
-              type="submit"
-              form="settings"
-              className="rounded-lg px-4 py-2 text-sm font-semibold shadow-sm border bg-violet-600 text-white hover:bg-violet-700"
-            >
+            </Button>
+            <Button type="submit" form="settings">
               save
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -125,7 +119,7 @@ export default function Home() {
               Country
             </label>
 
-            <Select.Root placeholder="Select a country...">
+            <Select.Root placeholder="Select a country..." defaultValue="br">
               <Select.Item value="br">Brazil</Select.Item>
               <Select.Item value="us">United States</Select.Item>
             </Select.Root>
@@ -138,7 +132,7 @@ export default function Home() {
             >
               Timezone
             </label>
-            <Select.Root placeholder="Select a timezone...">
+            <Select.Root placeholder="Select a timezone..." defaultValue="sp">
               <Select.Item value="pst">
                 Pacific Standard Time (UTC-08:00)
               </Select.Item>
@@ -164,25 +158,25 @@ export default function Home() {
                 </Select.Root>
 
                 <div className="flex items-center gap-1">
-                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                  <Button variant="icon">
                     <BoldIcon className="size-4 text-zinc-500" />
-                  </button>
+                  </Button>
 
-                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                  <Button variant="icon">
                     <ItalicIcon className="size-4 text-zinc-500" />
-                  </button>
+                  </Button>
 
-                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                  <Button variant="icon">
                     <LinkIcon className="size-4 text-zinc-500" />
-                  </button>
+                  </Button>
 
-                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                  <Button variant="icon">
                     <ListIcon className="size-4 text-zinc-500" />
-                  </button>
+                  </Button>
 
-                  <button className=" p-2 rounded-md hover:bg-zinc-50">
+                  <Button variant="icon">
                     <ListOrderedIcon className="size-4 text-zinc-500" />
-                  </button>
+                  </Button>
                 </div>
               </div>
 
@@ -209,18 +203,12 @@ export default function Home() {
           </div>
 
           <div className="flex items-center justify-end gap-2">
-            <button
-              type="button"
-              className="rounded-lg px-4 py-2 text-sm font-semibold shadow-sm border border-zinc-300 text-zinc-700 hover:bg-zinc-50"
-            >
+            <Button type="button" variant="outline">
               Cancel
-            </button>
-            <button
-              type="submit"
-              className="rounded-lg px-4 py-2 text-sm font-semibold shadow-sm border bg-violet-600 text-white hover:bg-violet-700"
-            >
+            </Button>
+            <Button type="submit" form="settings">
               save
-            </button>
+            </Button>
           </div>
         </form>
       </div>

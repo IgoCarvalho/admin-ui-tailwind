@@ -11,6 +11,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { Button } from "../button";
 
 interface InputFileContextType {
   id: string;
@@ -150,9 +151,9 @@ export function FileList() {
             </div>
           </div>
 
-          <button className="ml-auto p-2 rounded-md hover:bg-zinc-50">
+          <Button variant="icon">
             <Trash2Icon className="size-5 text-zinc-500" />
-          </button>
+          </Button>
         </div>
       ))}
     </div>
