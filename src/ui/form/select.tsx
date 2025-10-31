@@ -13,7 +13,7 @@ export function Root({
 }: SelectProps & SelectPrimitive.SelectProps) {
   return (
     <SelectPrimitive.Root {...props}>
-      <SelectPrimitive.Trigger className="flex items-center justify-between h-11 w-full gap-2 rounded-lg border border-zinc-300 px-3 py-2 shadow-sm data-[placeholder]:text-zinc-600">
+      <SelectPrimitive.Trigger className="flex items-center justify-between h-11 w-full gap-2 rounded-lg border border-zinc-300 px-3 py-2 shadow-sm data-[placeholder]:text-zinc-600 outline-none focus:border-zinc-300 focus:ring-4 focus:ring-violet-100">
         <SelectPrimitive.Value placeholder={placeholder} />
 
         <SelectPrimitive.Icon>
@@ -26,7 +26,7 @@ export function Root({
           side="bottom"
           position="popper"
           sideOffset={6}
-          className="w-(--radix-select-trigger-width) z-10 rounded-lg border border-zinc-200 bg-white overflow-hidden "
+          className="w-(--radix-select-trigger-width) z-10 rounded-lg border border-zinc-200 bg-white overflow-hidden shadow-sm"
         >
           <SelectPrimitive.ScrollUpButton />
 
