@@ -10,7 +10,7 @@ import { NavItem } from "./nav-item";
 
 export function MainNavigation() {
   return (
-    <nav className="space-y-0.5 ">
+    <nav className="space-y-0.5 overflow-y-auto">
       <NavItem title="Home" icon={Home} />
       <NavItem title="Dashboard" icon={BarChart} />
       <NavItem title="Projects" icon={SquareStack} />

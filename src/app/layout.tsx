@@ -21,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fontInter.variable} antialiased`}>
-        <div className="font-sans min-h-svh grid grid-cols-(--grid-app)">
+        <div className="font-sans min-h-svh lg:grid grid-cols-(--grid-app) max-w-[1920px] mx-auto">
           <SideBar />
-          <main className="px-8 pb-12 pt-8">{children}</main>
+          <main className="px-4 pb-12 pt-24 col-span-full lg:col-start-2 lg:px-8 lg:pb-12 lg:pt-8">
+            {children}
+          </main>
         </div>
       </body>
     </html>
