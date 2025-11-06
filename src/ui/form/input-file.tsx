@@ -1,7 +1,13 @@
 "use client";
 
 import { formatBytes } from "@/utils/format-bytes";
-import { Trash2Icon, UploadCloudIcon, UserIcon } from "lucide-react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import {
+  CheckCircle2Icon,
+  Trash2Icon,
+  UploadCloudIcon,
+  UserIcon,
+} from "lucide-react";
 import {
   ChangeEvent,
   ComponentProps,
@@ -11,6 +17,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { tv, VariantProps } from "tailwind-variants";
 import { Button } from "../button";
 
 interface InputFileContextType {
@@ -119,43 +126,106 @@ export function Control(props: ComponentProps<"input">) {
 
 export function FileList() {
   const { files } = useFileInput();
+  const [parent] = useAutoAnimate();
 
   return (
-    <div className="mt-4 space-y-3">
+    <div ref={parent} className="mt-4 space-y-3">
       {files.map((file) => (
-        <div
-          key={file.name}
-          className="group flex items-start gap-4 rounded-lg border border-zinc-200 p-4"
-        >
-          <div className="rounded-full border-4 border-violet-100 bg-violet-200 p-2 text-violet-600">
-            <UploadCloudIcon className="size-4" />
-          </div>
-          <div className="grow min-w-0 flex flex-col items-start gap-1 ">
-            <div className="w-full flex flex-col ">
-              <span
-                className="truncate  text-sm font-medium text-zinc-700"
-                title={file.name}
-              >
-                {file.name}
-              </span>
-              <span className="text-sm text-zinc-500">
-                {formatBytes(file.size)}
-              </span>
-            </div>
-
-            <div className="flex w-full items-center gap-3">
-              <div className="h-2 flex-1 rounded-full bg-zinc-100">
-                <div className="h-2 rounded-full w-4/5 bg-violet-600" />
-              </div>
-              <span className="text-sm font-medium text-zinc-700">80%</span>
-            </div>
-          </div>
-
-          <Button variant="icon">
-            <Trash2Icon className="size-5 text-zinc-500" />
-          </Button>
-        </div>
+        <FileItem key={file.name} name={file.name} size={file.size} />
       ))}
+    </div>
+  );
+}
+
+const fileItem = tv({
+  slots: {
+    container:
+      "group flex items-start gap-4 rounded-lg border border-zinc-200 p-4",
+    cloudIcon:
+      "rounded-full border-4 border-violet-100 bg-violet-200 p-2 text-violet-600",
+    deleteIcon: "text-zinc-500",
+  },
+  variants: {
+    state: {
+      error: {
+        container: "bg-error-25 border-error-300 text-error-100",
+        cloudIcon: "border-error-50 bg-error-100 text-error-600",
+        deleteIcon: "text-error-700",
+      },
+      complete: {
+        container: "border-violet-500",
+      },
+      progress: "",
+    },
+  },
+  defaultVariants: {
+    state: "progress",
+  },
+});
+
+interface FileItemProps extends VariantProps<typeof fileItem> {
+  name: string;
+  size: number;
+}
+
+export function FileItem({ name, size, state }: FileItemProps) {
+  const { container, cloudIcon, deleteIcon } = fileItem({ state });
+
+  return (
+    <div className={container()}>
+      <div className={cloudIcon()}>
+        <UploadCloudIcon className="size-4" />
+      </div>
+
+      {state === "error" ? (
+        <div className="grow min-w-0 flex flex-col items-start gap-1 ">
+          <div className="w-full flex flex-col ">
+            <span className="truncate  text-sm font-medium text-error-700">
+              Upload failed, please try again.
+            </span>
+            <span className="text-sm text-error-600">{name}</span>
+          </div>
+
+          <button
+            type="button"
+            className="text-sm font-semibold text-error-700 hover:text-error-900"
+          >
+            Try again
+          </button>
+        </div>
+      ) : (
+        <div className="grow min-w-0 flex flex-col items-start gap-1 ">
+          <div className="w-full flex flex-col ">
+            <span
+              className="truncate  text-sm font-medium text-zinc-700"
+              title={name}
+            >
+              {name}
+            </span>
+            <span className="text-sm text-zinc-500">{formatBytes(size)}</span>
+          </div>
+
+          <div className="flex w-full items-center gap-3">
+            <div className="h-2 flex-1 rounded-full bg-zinc-100">
+              <div
+                className="h-2 rounded-full bg-violet-600"
+                style={{ width: state === "complete" ? "100%" : "80%" }}
+              />
+            </div>
+            <span className="text-sm font-medium text-zinc-700">
+              {state === "complete" ? "100%" : "80%"}
+            </span>
+          </div>
+        </div>
+      )}
+
+      {state === "complete" ? (
+        <CheckCircle2Icon className="size-5 fill-violet-600 text-white" />
+      ) : (
+        <Button type="button" variant="icon" className={deleteIcon()}>
+          <Trash2Icon className="size-5" />
+        </Button>
+      )}
     </div>
   );
 }
