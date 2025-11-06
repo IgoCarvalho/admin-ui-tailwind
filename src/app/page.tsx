@@ -1,4 +1,5 @@
 import { Button } from "@/ui/button";
+import { FormField } from "@/ui/form/form-field";
 import * as InputFile from "@/ui/form/input-file";
 import * as Select from "@/ui/form/select";
 import { TextArea } from "@/ui/form/text-area";
@@ -21,7 +22,7 @@ export default function Home() {
       <SettingsTabs />
 
       <div className="mt-6 flex flex-col ">
-        <div className="flex justify-between items-center pb-5 border-b border-zinc-200">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-4 pb-5 border-b border-zinc-200">
           <div className="space-y-1">
             <h2 className="text-lg font-medium text-zinc-900">Personal info</h2>
             <span className="text-sm text-zinc-500">
@@ -44,14 +45,14 @@ export default function Home() {
           action=""
           className="mt-6 flex flex-col gap-5 w-full divide-y divide-zinc-300"
         >
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+          <FormField>
             <label
               htmlFor="first-name"
               className="text-sm font-medium text-zinc-700"
             >
               Name
             </label>
-            <div className="grid grid-cols-2 gap-6 ">
+            <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 ">
               <Input.Root>
                 <Input.Control
                   id="first-name"
@@ -59,13 +60,23 @@ export default function Home() {
                   defaultValue="Igo"
                 />
               </Input.Root>
-              <Input.Root>
-                <Input.Control defaultValue="Carvalho" />
-              </Input.Root>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+              <div className="flex flex-col gap-3">
+                <label
+                  htmlFor="last-name"
+                  className="text-sm font-medium text-zinc-700 lg:sr-only"
+                >
+                  Last name
+                </label>
+
+                <Input.Root>
+                  <Input.Control id="last-name" defaultValue="Carvalho" />
+                </Input.Root>
+              </div>
+            </div>
+          </FormField>
+
+          <FormField>
             <label
               htmlFor="email"
               className="text-sm font-medium text-zinc-700"
@@ -82,9 +93,9 @@ export default function Home() {
                 defaultValue="igocarvalho@me.com"
               />
             </Input.Root>
-          </div>
+          </FormField>
 
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+          <FormField>
             <label
               htmlFor="photo"
               className="text-sm font-medium text-zinc-700"
@@ -95,23 +106,23 @@ export default function Home() {
               </span>
             </label>
 
-            <InputFile.Root className="flex items-start gap-5">
+            <InputFile.Root className="flex flex-col lg:flex-row lg:items-start gap-5">
               <InputFile.ImagePreview />
               <InputFile.Trigger />
               <InputFile.Control />
             </InputFile.Root>
-          </div>
+          </FormField>
 
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+          <FormField>
             <label htmlFor="role" className="text-sm font-medium text-zinc-700">
               Role
             </label>
             <Input.Root>
               <Input.Control id="role" defaultValue="Frontend Developer" />
             </Input.Root>
-          </div>
+          </FormField>
 
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+          <FormField>
             <label
               htmlFor="country"
               className="text-sm font-medium text-zinc-700"
@@ -123,9 +134,9 @@ export default function Home() {
               <Select.Item value="br">Brazil</Select.Item>
               <Select.Item value="us">United States</Select.Item>
             </Select.Root>
-          </div>
+          </FormField>
 
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+          <FormField>
             <label
               htmlFor="timezone"
               className="text-sm font-medium text-zinc-700"
@@ -140,9 +151,9 @@ export default function Home() {
                 America São Paulo (UTC-03:00)
               </Select.Item>
             </Select.Root>
-          </div>
+          </FormField>
 
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+          <FormField>
             <label htmlFor="bio" className="text-sm font-medium text-zinc-700">
               Bio
               <span className="block mt-0.5 text-sm font-normal text-zinc-500">
@@ -151,7 +162,7 @@ export default function Home() {
             </label>
 
             <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid lg:grid-cols-2 gap-3">
                 <Select.Root defaultValue="normal">
                   <Select.Item value="normal">Normal Text</Select.Item>
                   <Select.Item value="md">Markdown</Select.Item>
@@ -182,9 +193,9 @@ export default function Home() {
 
               <TextArea id="bio" defaultValue="I'm a Frontend Developer" />
             </div>
-          </div>
+          </FormField>
 
-          <div className="grid grid-cols-(--grid-form) gap-3 pb-5">
+          <FormField>
             <label
               htmlFor="projects"
               className="text-sm font-medium text-zinc-700"
@@ -200,7 +211,7 @@ export default function Home() {
               <InputFile.FileList />
               <InputFile.Control multiple />
             </InputFile.Root>
-          </div>
+          </FormField>
 
           <div className="flex items-center justify-end gap-2">
             <Button type="button" variant="outline">
