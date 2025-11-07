@@ -12,7 +12,7 @@ export function SettingsTabs() {
     <ScrollArea.Root className="w-full" type="scroll">
       <ScrollArea.Viewport>
         <Tabs.Root defaultValue="tab1" onValueChange={setActiveTab}>
-          <Tabs.List className="mt-6 flex items-center gap-4 w-full border-b border-zinc-200">
+          <Tabs.List className="mt-6 flex items-center gap-4 w-full border-b border-zinc-200 dark:border-zinc-700">
             <TabItem activeTab={activeTab} name="tab1" title="My details" />
             <TabItem activeTab={activeTab} name="tab2" title="Profile" />
             <TabItem activeTab={activeTab} name="tab3" title="Password" />
@@ -29,9 +29,9 @@ export function SettingsTabs() {
 
       <ScrollArea.Scrollbar
         orientation="horizontal"
-        className="flex h-0.5 translate-y-1.5 touch-none select-none flex-col bg-zinc-100"
+        className="flex h-0.5 translate-y-1.5 touch-none select-none flex-col bg-zinc-100 dark:bg-zinc-800"
       >
-        <ScrollArea.Thumb className="relative flex-1 rounded-lg bg-zinc-300" />
+        <ScrollArea.Thumb className="relative flex-1 rounded-lg bg-zinc-300 dark:bg-zinc-600" />
       </ScrollArea.Scrollbar>
     </ScrollArea.Root>
   );

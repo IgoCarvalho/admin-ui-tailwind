@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontInter.variable} antialiased`}>
+      <body className={`${fontInter.variable} antialiased dark:bg-zinc-900`}>
         <div className="font-sans min-h-svh lg:grid grid-cols-(--grid-app) max-w-[1920px] mx-auto">
           <SideBar />
           <main className="px-4 pb-12 pt-24 col-span-full lg:col-start-2 lg:px-8 lg:pb-12 lg:pt-8">

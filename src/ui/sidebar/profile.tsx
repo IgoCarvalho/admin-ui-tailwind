@@ -11,14 +11,16 @@ export function Profile() {
       />
 
       <div className="flex flex-col overflow-hidden">
-        <span className="text-sm font-semibold text-zinc-700">
+        <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-100">
           Igo Carvalho
         </span>
-        <span className="text-sm text-zinc-500 truncate">@igocarvalho</span>
+        <span className="text-sm text-zinc-500 dark:text-zinc-400 truncate">
+          @igocarvalho
+        </span>
       </div>
 
       <Button variant="icon" className="ml-auto">
-        <LogOut className="size-5 text-zinc-500" />
+        <LogOut className="size-5" />
       </Button>
     </div>
   );

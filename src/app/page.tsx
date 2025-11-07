@@ -17,15 +17,19 @@ import {
 export default function Home() {
   return (
     <>
-      <h1 className="text-3xl font-medium text-zinc-900">Settings</h1>
+      <h1 className="text-3xl font-medium text-zinc-900 dark:text-zinc-100">
+        Settings
+      </h1>
 
       <SettingsTabs />
 
       <div className="mt-6 flex flex-col ">
-        <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-4 pb-5 border-b border-zinc-200">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-4 pb-5 border-b border-zinc-200 dark:border-zinc-700">
           <div className="space-y-1">
-            <h2 className="text-lg font-medium text-zinc-900">Personal info</h2>
-            <span className="text-sm text-zinc-500">
+            <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              Personal info
+            </h2>
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">
               Update your photo and personal details here.
             </span>
           </div>
@@ -43,12 +47,12 @@ export default function Home() {
         <form
           id="settings"
           action=""
-          className="mt-6 flex flex-col gap-5 w-full divide-y divide-zinc-300"
+          className="mt-6 flex flex-col gap-5 w-full divide-y divide-zinc-300 dark:divide-zinc-700"
         >
           <FormField>
             <label
               htmlFor="first-name"
-              className="text-sm font-medium text-zinc-700"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
               Name
             </label>
@@ -64,7 +68,7 @@ export default function Home() {
               <div className="flex flex-col gap-3">
                 <label
                   htmlFor="last-name"
-                  className="text-sm font-medium text-zinc-700 lg:sr-only"
+                  className="text-sm font-medium text-zinc-700 dark:text-zinc-300 lg:sr-only"
                 >
                   Last name
                 </label>
@@ -79,7 +83,7 @@ export default function Home() {
           <FormField>
             <label
               htmlFor="email"
-              className="text-sm font-medium text-zinc-700"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
               Email address
             </label>
@@ -98,10 +102,10 @@ export default function Home() {
           <FormField>
             <label
               htmlFor="photo"
-              className="text-sm font-medium text-zinc-700"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
               Your photo
-              <span className="block mt-0.5 text-sm font-normal text-zinc-500">
+              <span className="block mt-0.5 text-sm font-normal text-zinc-500 ">
                 This will be displayed on your profile.
               </span>
             </label>
@@ -114,7 +118,10 @@ export default function Home() {
           </FormField>
 
           <FormField>
-            <label htmlFor="role" className="text-sm font-medium text-zinc-700">
+            <label
+              htmlFor="role"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
+            >
               Role
             </label>
             <Input.Root>
@@ -125,7 +132,7 @@ export default function Home() {
           <FormField>
             <label
               htmlFor="country"
-              className="text-sm font-medium text-zinc-700"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
               Country
             </label>
@@ -139,7 +146,7 @@ export default function Home() {
           <FormField>
             <label
               htmlFor="timezone"
-              className="text-sm font-medium text-zinc-700"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
               Timezone
             </label>
@@ -154,7 +161,10 @@ export default function Home() {
           </FormField>
 
           <FormField>
-            <label htmlFor="bio" className="text-sm font-medium text-zinc-700">
+            <label
+              htmlFor="bio"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
+            >
               Bio
               <span className="block mt-0.5 text-sm font-normal text-zinc-500">
                 Write a short introduction.
@@ -198,7 +208,7 @@ export default function Home() {
           <FormField>
             <label
               htmlFor="projects"
-              className="text-sm font-medium text-zinc-700"
+              className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
               Portfolio projects
               <span className="block mt-0.5 text-sm font-normal text-zinc-500">
