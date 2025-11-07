@@ -24,7 +24,8 @@ import { Button } from "../button";
 interface InputFileContextType {
   id: string;
   files: File[];
-  onFilesSelect: (files: File[]) => void;
+  onFilesSelect: (files: File[], multiple?: boolean) => void;
+  removeItem: (index: number) => void;
 }
 
 const InputFileContext = createContext({} as InputFileContextType);
@@ -41,8 +42,23 @@ export function Root(props: ComponentProps<"div">) {
   const id = useId();
   const [files, setFiles] = useState<File[]>([]);
 
+  function onFilesSelect(selectedFiles: File[], multiple?: boolean) {
+    if (multiple) {
+      onFilesSelect([...files, ...selectedFiles]);
+      return;
+    }
+
+    setFiles(selectedFiles);
+  }
+
+  function removeItem(itemIndex: number) {
+    const newFiles = [...files];
+    newFiles.splice(itemIndex, 1);
+    setFiles(newFiles);
+  }
+
   return (
-    <InputFileContext.Provider value={{ id, files, onFilesSelect: setFiles }}>
+    <InputFileContext.Provider value={{ id, files, onFilesSelect, removeItem }}>
       <div {...props} />
     </InputFileContext.Provider>
   );
@@ -104,20 +120,16 @@ export function ImagePreview(props: ComponentProps<"div">) {
 }
 
 export function Control(props: ComponentProps<"input">) {
-  const { id, files, onFilesSelect } = useFileInput();
+  const { id, onFilesSelect } = useFileInput();
 
   function handleFileSelect(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files?.length) return;
 
     const selectedFiles = Array.from(event.target.files);
 
-    if (props.multiple) {
-      onFilesSelect([...files, ...selectedFiles]);
-      return;
-    }
-
-    onFilesSelect(selectedFiles);
+    onFilesSelect(selectedFiles, event.target.multiple);
   }
+
   return (
     <input
       type="file"
@@ -130,13 +142,18 @@ export function Control(props: ComponentProps<"input">) {
 }
 
 export function FileList() {
-  const { files } = useFileInput();
+  const { files, removeItem } = useFileInput();
   const [parent] = useAutoAnimate();
 
   return (
     <div ref={parent} className="mt-4 space-y-3">
-      {files.map((file) => (
-        <FileItem key={file.name} name={file.name} size={file.size} />
+      {files.map((file, index) => (
+        <FileItem
+          key={file.name}
+          name={file.name}
+          size={file.size}
+          onRemoveItem={() => removeItem(index)}
+        />
       ))}
     </div>
   );
@@ -174,9 +191,10 @@ const fileItem = tv({
 interface FileItemProps extends VariantProps<typeof fileItem> {
   name: string;
   size: number;
+  onRemoveItem?: () => void;
 }
 
-export function FileItem({ name, size, state = "complete" }: FileItemProps) {
+export function FileItem({ name, size, onRemoveItem, state }: FileItemProps) {
   const { container, cloudIcon, deleteIcon } = fileItem({ state });
 
   return (
@@ -234,7 +252,12 @@ export function FileItem({ name, size, state = "complete" }: FileItemProps) {
       {state === "complete" ? (
         <CheckCircle2Icon className="size-5 fill-violet-600 text-white" />
       ) : (
-        <Button type="button" variant="icon" className={deleteIcon()}>
+        <Button
+          type="button"
+          variant="icon"
+          className={deleteIcon()}
+          onClick={onRemoveItem}
+        >
           <Trash2Icon className="size-5" />
         </Button>
       )}
