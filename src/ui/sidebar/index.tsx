@@ -3,6 +3,7 @@ import { MenuIcon, Search } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "../button";
 import * as Input from "../input";
+import { ThemeSwitcher } from "../theme-switcher";
 import { FooterNavigation } from "./footer-navigation";
 import { Logo } from "./logo";
 import { MainNavigation } from "./main-navigation";
@@ -19,16 +20,21 @@ export function SideBar() {
     >
       <div className="flex items-center justify-between">
         <Logo />
-        <Collapsible.Trigger asChild>
-          <Button variant="icon" className="lg:hidden">
-            <MenuIcon className="size-6 text-zinc-500" />
-          </Button>
-        </Collapsible.Trigger>
+
+        <div className="flex items-center gap-4">
+          <ThemeSwitcher />
+
+          <Collapsible.Trigger asChild>
+            <Button variant="icon" className="lg:hidden">
+              <MenuIcon className="size-6 text-zinc-500 dark:text-zinc-400" />
+            </Button>
+          </Collapsible.Trigger>
+        </div>
       </div>
 
       <Collapsible.Content
         forceMount
-        className="grow min-h-0 flex flex-col gap-6 data-[state=closed]:hidden lg:data-[state=closed]:flex data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out"
+        className="grow min-h-0 flex flex-col gap-6 data-[state=closed]:hidden lg:data-[state=closed]:flex data-[state=open]:animate-fade-in"
       >
         <Input.Root>
           <Input.Prefix>
